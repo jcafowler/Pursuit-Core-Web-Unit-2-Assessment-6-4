@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let form = document.querySelector("form")
   let content = document.querySelector("#content")
   let submissions = document.querySelector("#submissions")
+  let userInput = document.querySelector("#userInput")
 
   const populateMovies = async () => {
     let res = await axios.get("https://ghibliapi.herokuapp.com/films")
@@ -34,10 +35,28 @@ document.addEventListener("DOMContentLoaded", () => {
     content.appendChild(description)
 
   }
+  const postReview = (review) => {
+
+    let li = document.createElement("li")
+    let title = document.createElement("b")
+    title.innerText = select.options[select.selectedIndex].text + ": "
+    let post = document.createElement("p")
+    li.innerText = review
+    li.className = "reviews"
+    li.prepend(title)
+    submissions.appendChild(li)
+  }
 
   select.addEventListener("change", (e) => {
+    submissions.innerHTML = ""
     content.innerHTML = ""
     displayInfo(e.target.value)
   })
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    postReview(userInput.value)
+  })
+
   window.onload = populateMovies()
 })
