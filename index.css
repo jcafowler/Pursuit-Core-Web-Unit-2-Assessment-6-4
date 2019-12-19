@@ -1,5 +1,32 @@
+*{
+  font-family: monospace;
+}
 body{
   background-color: lavender;
+}
+#pageContent {
+  margin: 0 auto;
+}
+#header {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: skyblue;
+  width: 70%;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+#userInput{
+  width:400px;
+}
+#pageContent{
+  column-count: 1;
+  justify-content: left;
+  margin: 0 auto;
+  width: 60%;
 }
 img {
   height: 150px;
